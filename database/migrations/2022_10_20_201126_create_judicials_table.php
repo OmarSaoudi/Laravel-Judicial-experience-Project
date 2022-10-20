@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('judicials', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name'); // اسم الخبرة القضائية
             $table->string('statement'); // البيان
             $table->string('council_or_court'); // المجلس او المحكمة
             $table->string('case_number'); // رقم القضية

@@ -72,6 +72,7 @@
                 <td>{{ $judicial->name }}</td>
                 <td>{{ $judicial->name }}</td>
                 <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
                 <td>
                   <a href="{{ route('judicials.edit',$judicial->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                   <a class="btn btn-info btn-sm" href="{{ route('judicials.show',$judicial->id) }}"><i class="fa fa-eye"></i></a>
@@ -85,6 +86,7 @@
               <tr>
                 <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
+                <th>Name</th>
                 <th>Name</th>
                 <th>Name</th>
                 <th>Name</th>

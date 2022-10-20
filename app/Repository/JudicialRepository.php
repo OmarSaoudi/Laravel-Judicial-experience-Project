@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 use App\Models\Judicial;
+use App\Models\Attachment;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class JudicialRepository implements JudicialRepositoryInterface{
 
@@ -24,6 +26,7 @@ class JudicialRepository implements JudicialRepositoryInterface{
 
         try {
             $judicials = new Judicial();
+            $judicials->name = $request->name;
             $judicials->statement = $request->statement;
             $judicials->council_or_court = $request->council_or_court;
             $judicials->case_number = $request->case_number;
@@ -39,6 +42,23 @@ class JudicialRepository implements JudicialRepositoryInterface{
             $judicials->estimated_amount = $request->estimated_amount;
             $judicials->note = $request->note;
             $judicials->save();
+
+            // insert attachment
+            if($request->hasfile('photos'))
+            {
+                  foreach($request->file('photos') as $file)
+                  {
+                      $name = $file->getClientOriginalName();
+                      $file->storeAs('attachments/judicials/'.$judicials->name, $file->getClientOriginalName(),'upload_attachments');
+
+                      // insert in attachments_table
+                      $attachments = new Attachment();
+                      $attachments->filename = $name;
+                      $attachments->attachmentable_id = $judicials->id;
+                      $attachments->attachmentable_type = 'App\Models\Judicial';
+                      $attachments->save();
+                  }
+            }
 
             DB::commit(); // insert data
             return redirect()->route('judicials.index');
@@ -68,6 +88,7 @@ class JudicialRepository implements JudicialRepositoryInterface{
     {
         try{
             $judicials = Judicial::findorfail($request->id);
+            $judicials->name = $request->name;
             $judicials->statement = $request->statement;
             $judicials->council_or_court = $request->council_or_court;
             $judicials->case_number = $request->case_number;
@@ -104,6 +125,38 @@ class JudicialRepository implements JudicialRepositoryInterface{
         $delete_all_id = explode(",", $request->delete_all_id);
         Judicial::whereIn('id', $delete_all_id)->delete();
         return redirect()->route('judicials.index');
+    }
+
+    public function UploadAttachment($request)
+    {
+        foreach($request->file('photos') as $file)
+        {
+            $name = $file->getClientOriginalName();
+            $file->storeAs('attachments/judicials/'.$request->judicial_name, $file->getClientOriginalName(),'upload_attachments');
+
+            // insert in attachments_table
+            $attachments = new Attachment();
+            $attachments->filename = $name;
+            $attachments->attachmentable_id = $request->judicial_id;
+            $attachments->attachmentable_type = 'App\Models\Judicial';
+            $attachments->save();
+        }
+        return redirect()->route('judicials.show',$request->judicial_id);
+    }
+
+    public function DownloadAttachment($judicialsname, $filename)
+    {
+        return response()->download(public_path('attachments/judicials/'.$judicialsname.'/'.$filename));
+    }
+
+    public function DeleteAttachment($request)
+    {
+        // Delete img in server disk
+        Storage::disk('upload_attachments')->delete('attachments/judicials/'.$request->judicial_name.'/'.$request->filename);
+
+        // Delete in data
+        Attachment::where('id',$request->id)->where('filename',$request->filename)->delete();
+        return redirect()->route('judicials.show',$request->judicial_id);
     }
 
 }

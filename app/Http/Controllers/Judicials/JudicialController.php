@@ -98,4 +98,19 @@ class JudicialController extends Controller
     {
         return $this->Judicial->delete_all_j($request);
     }
+
+    public function UploadAttachment(Request $request)
+    {
+        return $this->Judicial->UploadAttachment($request);
+    }
+
+    public function DownloadAttachment($judicialsname,$filename)
+    {
+        return $this->Judicial->DownloadAttachment($judicialsname,$filename);
+    }
+
+    public function DeleteAttachment(Request $request)
+    {
+        return $this->Judicial->DeleteAttachment($request);
+    }
 }

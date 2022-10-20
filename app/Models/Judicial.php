@@ -11,6 +11,7 @@ class Judicial extends Model
 
     protected $table = 'judicials';
     protected $fillable = [
+        'name',
         'statement',
         'council_or_court',
         'case_number',

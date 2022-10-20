@@ -28,6 +28,15 @@ interface JudicialRepositoryInterface{
     // DeleteAllJudicials
     public function delete_all_j($request);
 
+    //UploadAttachment
+    public function UploadAttachment($request);
+
+    //DownloadAttachment
+    public function DownloadAttachment($judicialsname,$filename);
+
+    //DeleteAttachment
+    public function DeleteAttachment($request);
+
 }
 
 
