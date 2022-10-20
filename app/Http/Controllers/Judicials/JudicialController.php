@@ -25,7 +25,7 @@ class JudicialController extends Controller
      */
     public function index()
     {
-        //
+        return $this->Judicial->GetJudicials();
     }
 
     /**
@@ -35,7 +35,7 @@ class JudicialController extends Controller
      */
     public function create()
     {
-        //
+        return $this->Judicial->CreateJudicials();
     }
 
     /**
@@ -46,7 +46,7 @@ class JudicialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->Judicial->StoreJudicials($request);
     }
 
     /**
@@ -55,9 +55,9 @@ class JudicialController extends Controller
      * @param  \App\Models\Judicial  $judicial
      * @return \Illuminate\Http\Response
      */
-    public function show(Judicial $judicial)
+    public function show($id)
     {
-        //
+        return $this->Judicial->ShowJudicials($id);
     }
 
     /**
@@ -66,9 +66,9 @@ class JudicialController extends Controller
      * @param  \App\Models\Judicial  $judicial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Judicial $judicial)
+    public function edit($id)
     {
-        //
+        return $this->Judicial->EditJudicials($id);
     }
 
     /**
@@ -78,9 +78,9 @@ class JudicialController extends Controller
      * @param  \App\Models\Judicial  $judicial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Judicial $judicial)
+    public function update(Request $request)
     {
-        //
+        return $this->Judicial->UpdateJudicials($request);
     }
 
     /**
@@ -89,8 +89,13 @@ class JudicialController extends Controller
      * @param  \App\Models\Judicial  $judicial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Judicial $judicial)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Judicial->DeleteJudicials($request);
+    }
+
+    public function delete_all_j(Request $request)
+    {
+        return $this->Judicial->delete_all_j($request);
     }
 }

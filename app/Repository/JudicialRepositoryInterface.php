@@ -25,6 +25,9 @@ interface JudicialRepositoryInterface{
     // DeleteJudicials
     public function DeleteJudicials($request);
 
+    // DeleteAllJudicials
+    public function delete_all_j($request);
+
 }
 
 

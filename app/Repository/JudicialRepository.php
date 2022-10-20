@@ -99,4 +99,11 @@ class JudicialRepository implements JudicialRepositoryInterface{
         return redirect()->route('judicials.index');
     }
 
+    public function delete_all_j($request)
+    {
+        $delete_all_id = explode(",", $request->delete_all_id);
+        Judicial::whereIn('id', $delete_all_id)->delete();
+        return redirect()->route('judicials.index');
+    }
+
 }

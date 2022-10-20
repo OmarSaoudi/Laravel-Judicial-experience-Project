@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Students
+    Judicials
 @stop
 
 @section('css')
@@ -14,11 +14,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Students
+      Judicials
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Students</li>
+      <li class="active">Judicials</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -27,9 +27,9 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Students List <small>{{ $students->count() }}</small></h3>
+            <h3 class="box-title">Judicials List <small>{{ $judicials->count() }}</small></h3>
             <br><br>
-            <a href="students/create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
+            <a href="judicials/create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
             <button type="button" class="btn btn-danger" id="btn_delete_all"><i class="fa fa-trash"></i> Delete All</button>
           <!-- /.box-header -->
           <div class="box-body" id="datatable">
@@ -39,33 +39,46 @@
                 <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Grade</th>
-                <th>Classroom</th>
-                <th>Section</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
                 <th>Operation</th>
               </tr>
               </thead>
               <tbody>
-              @foreach($students as $student)
+              @foreach($judicials as $judicial)
               <tr>
-                <td><input type="checkbox"  value="{{ $student->id }}" class="box1"></td>
+                <td><input type="checkbox"  value="{{ $judicial->id }}" class="box1"></td>
                 <td>{{ $loop->index + 1 }}</td>
-                <td>{{ $student->name }}</td>
-                <td>{{ $student->email }}</td>
-                <td>{{ $student->gender->name }}</td>
-                <td>{{ $student->grade->name }}</td>
-                <td>{{ $student->classroom->name }}</td>
-                <td>{{ $student->section->name }}</td>
-                <td>{{ $student->academic_year }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
+                <td>{{ $judicial->name }}</td>
                 <td>
-                  <a href="{{ route('students.edit',$student->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                  <a class="btn btn-info btn-sm" href="{{ route('students.show',$student->id) }}"><i class="fa fa-eye"></i></a>
-                  <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteStudent{{ $student->id }}"><i class="fa fa-trash"></i></a>
+                  <a href="{{ route('judicials.edit',$judicial->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                  <a class="btn btn-info btn-sm" href="{{ route('judicials.show',$judicial->id) }}"><i class="fa fa-eye"></i></a>
+                  <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#DeleteJudicial{{ $judicial->id }}"><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
-              @include('pages.students.delete')
+              @include('pages.judicials.delete')
               @endforeach
               </tbody>
               <tfoot>
@@ -73,11 +86,18 @@
                 <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Grade</th>
-                <th>Classroom</th>
-                <th>Section</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
+                <th>Name</th>
                 <th>Operation</th>
               </tr>
               </tfoot>
@@ -95,17 +115,17 @@
 </div>
 
 <!-- Delete All -->
-<div class="modal fade" id="delete_all_s">
+<div class="modal fade" id="delete_all_j">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-              <h4 class="modal-title">Delete All Students</h4>
+              <h4 class="modal-title">Delete All Judicials</h4>
         </div>
         <div class="modal-body">
-          <form action="{{ route('delete_all_s') }}" method="POST">
+          <form action="{{ route('delete_all_j') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <p>Are sure of the deleting process ?</p><br>
@@ -143,7 +163,7 @@
            });
 
            if (selected.length > 0) {
-               $('#delete_all_s').modal('show')
+               $('#delete_all_j').modal('show')
                $('input[id="delete_all_id"]').val(selected);
            }
        });
