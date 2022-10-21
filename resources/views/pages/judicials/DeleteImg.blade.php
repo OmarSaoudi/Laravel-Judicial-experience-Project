@@ -11,8 +11,8 @@
     @csrf
      <div class="modal-body">
       <input type="hidden" name="id" value="{{ $attachment->id }}">
-      <input type="hidden" name="student_name" value="{{ $attachment->attachmentable->name }}">
-      <input type="hidden" name="student_id" value="{{ $attachment->attachmentable->id }}">
+      <input type="hidden" name="judicial_name" value="{{ $attachment->attachmentable->name }}">
+      <input type="hidden" name="judicial_id" value="{{ $attachment->attachmentable->id }}">
       <p>Are sure of the deleting process ?</p>
       <input type="text" name="filename" readonly value="{{ $attachment->filename }}" class="form-control">
      </div>
