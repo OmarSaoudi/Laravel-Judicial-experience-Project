@@ -11,6 +11,8 @@ return [
     'Are_sure_of_the_deleting_process_?' => 'Are sure of the deleting process ?',
     'save_changes' => 'Save changes',
     'close' => 'Close',
+
+
     'name_judicial' => 'Name Judicial',
     'statement' => 'Statement',
     'council_or_court' => 'Council or Court',
@@ -27,4 +29,14 @@ return [
     'estimated_amount' => 'Estimated Amount',
     'note' => 'Note',
     'operation' => 'Operation',
+    'create_judicial' => 'Create Judicial',
+    'saving_data' => 'Saving Data',
+    'back' => 'Back',
+    'attachments' => 'Attachments',
+
+    'edit_judicial' => 'Edit Judicial',
+    'delete_judicial' => 'Delete Judicial',
+
+
+
 ];
