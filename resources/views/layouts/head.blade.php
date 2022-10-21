@@ -18,7 +18,15 @@
   <link rel="stylesheet" href="{{ URL::asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ URL::asset('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+  
+  @if (app()->getLocale() == 'ar')
+  <link rel="stylesheet" href="{{ URL::asset('assets/bower_components/font-awesome/css/font-awesome-rtl.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/AdminLTE-rtl.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/bower_components/bootstrap/dist/css/bootstrap-rtl.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/rtl.css') }}">
+  @else
   <link rel="stylesheet" href="{{ URL::asset('assets/bower_components/font-awesome/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/AdminLTE.min.css') }}">
+  @endif
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 @yield('css')
