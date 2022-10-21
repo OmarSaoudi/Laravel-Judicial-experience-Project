@@ -27,4 +27,9 @@ class Judicial extends Model
         'estimated_amount',
         'note',
     ];
+
+    public function attachments()
+    {
+        return $this->morphMany(Attachment::class, 'attachmentable');
+    }
 }

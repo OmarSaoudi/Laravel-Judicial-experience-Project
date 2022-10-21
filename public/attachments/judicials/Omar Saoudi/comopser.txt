@@ -1,0 +1,54 @@
+for permissions:
+composer require santigarcor/laratrust
+php artisan vendor:publish --tag="laratrust"
+
+
+
+
+
+
+
+part 2 : permission :
+
+composer require santigarcor/laratrust
+php artisan vendor:publish --tag="laratrust"
+php artisan config:clear
+php artisan laratrust:setup
+composer dump-autoload
+php artisan migrate
+php artisan laratrust:seeder
+composer dump-autoload
+and go to database/seed/datatable->$this->call(LaratrustSeeder::class);
+and do what you want to do .......................
+
+go to create php artisan make:seed UsersTableSeeder ->>
+
+got to create php artisan make:controller UserController --model=User
+
+
+
+for create Calendar
+https://github.com/maddhatter/laravel-fullcalendar
+https://cdn.datatables.net/
+https://datatables.net/
+https://bcrypt-generator.com/
+https://harviacode.com/category/laravel/
+https://www.tutsmake.com/category/laravel-tutorial/page/2/
+https://sweetalert.js.org/guides/
+https://morioh.com/
+https://www.tutsmake.com/
+https://wiki.hsoub.com/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9_%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9
+for create demo my site
+https://app.netlify.com/
+https://medium.com/maatwebsite/laravel-excel/home
+https://bitbucket.org/abdeleid/mypos/src/master/
+https://laravel-news.com/
+https://docs.astrotomic.info/laravel-translatable/
+https://ckeditor.com/ckeditor-5/download/
+https://www.positronx.io/
+
+
+
+
+
+

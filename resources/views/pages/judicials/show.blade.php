@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Show Student
+    Show Judicial
 @stop
 
 @section('css')
@@ -14,12 +14,12 @@
   <!-- Content Header (Page header) -->
    <section class="content-header">
     <h1>
-      Students
+      Judicials
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="{{ route('students.index') }}">Students</a></li>
-      <li class="active">Show Student</li>
+      <li><a href="{{ route('judicials.index') }}">Judicials</a></li>
+      <li class="active">Show Judicial</li>
     </ol>
    </section>
    <section class="content">
@@ -27,12 +27,12 @@
      <div class="col-xs-12">
      <div class="box">
       <div class="box-header">
-           <h3 class="box-title">Students Details</h3><br><br>
+           <h3 class="box-title">Judicials Details</h3><br><br>
       </div>
       <br>
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab_1" data-toggle="tab">Student information</a></li>
+          <li class="active"><a href="#tab_1" data-toggle="tab">Judicial information</a></li>
           <li><a href="#tab_2" data-toggle="tab">Attachments</a></li>
         </ul>
         <div class="tab-content">
@@ -40,32 +40,46 @@
             <table class="table table-striped" style="text-align:center">
                 <tbody>
                     <tr>
-                        <th scope="row">Student Name</th>
-                        <td>{{ $students->name }}</td>
-                        <th scope="row">Email</th>
-                        <td>{{ $students->email }}</td>
+                        <th scope="row">Judicial Name</th>
+                        <td>{{ $judicials->name }}</td>
+                        <th scope="row">Statement</th>
+                        <td>{{ $judicials->statement }}</td>
+                        <th scope="row">Council or Court</th>
+                        <td>{{ $judicials->council_or_court }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Date Of Birth</th>
-                        <td>{{ $students->date_birth }}</td>
-                        <th scope="row">Academic Year</th>
-                        <td>{{ $students->academic_year }}</td>
+                        <th scope="row">Case Number</th>
+                        <td>{{ $judicials->case_number }}</td>
+                        <th scope="row">Index Number</th>
+                        <td>{{ $judicials->index_number }}</td>
+                        <th scope="row">Session Day</th>
+                        <td>{{ $judicials->session_day }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Gender</th>
-                        <td>{{ $students->gender->name }}</td>
-                        <th scope="row">Nationalitie</th>
-                        <td>{{ $students->nationalitie->name }}</td>
-                        <th scope="row">Blood</th>
-                        <td>{{ $students->blood->name }}</td>
+                        <th scope="row">Room</th>
+                        <td>{{ $judicials->room }}</td>
+                        <th scope="row">Investigation Number</th>
+                        <td>{{ $judicials->investigation_number }}</td>
+                        <th scope="row">Prosecution Number</th>
+                        <td>{{ $judicials->prosecution_number }}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Grade</th>
-                        <td>{{ $students->grade->name }}</td>
-                        <th scope="row">Classroom</th>
-                        <td>{{ $students->classroom->name }}</td>
-                        <th scope="row">Section</th>
-                        <td>{{ $students->section->name }}</td>
+                        <th scope="row">Deposit Day</th>
+                        <td>{{ $judicials->deposit_date }}</td>
+                        <th scope="row">Deposit Number</th>
+                        <td>{{ $judicials->deposit_number }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Advance Amount</th>
+                        <td>{{ $judicials->advance_amount }}</td>
+                        <th scope="row">Amount Invoice</th>
+                        <td>{{ $judicials->amount_invoice }}</td>
+                        <th scope="row">Estimated Amount</th>
+                        <td>{{ $judicials->estimated_amount }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Note</th>
+                        <td>{{ $judicials->note }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -73,14 +87,14 @@
 
           <div class="tab-pane" id="tab_2">
             <div class="card-body">
-                <p class="text-danger">* Attachment Format : jpg , jpeg , png </p>
+                <p class="text-danger">* Attachment Format : jpg , jpeg , png , pdf , docx , xlsx , zip , txt </p>
                   <h5 class="card-title">Add Attachments</h5>
-                  <form method="post" action="{{ route('UploadAttachment') }}" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('UploadAttachment') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="custom-file">
-                      <input type="file" accept="image/*" name="photos[]" multiple required>
-                      <input type="hidden" name="student_name" value="{{ $students->name }}">
-                      <input type="hidden" name="student_id" value="{{ $students->id }}">
+                      <input type="file" accept=".pdf, .docx, .xlsx, .zip, .txt, .mp4, .mp3, .jpg, .png, image/jpeg, image/png" name="photos[]" multiple required>
+                      <input type="hidden" name="judicial_name" value="{{ $judicials->name }}">
+                      <input type="hidden" name="judicial_id" value="{{ $judicials->id }}">
                     </div>
                     <br>
                       <button type="submit" class="btn btn-primary">Save changes</button>
@@ -97,17 +111,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($students->images as $attachment)
+                  @foreach ($judicials->attachments as $attachment)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $attachment->filename }}</td>
                         <td>{{ $attachment->created_at->diffForHumans() }}</td>
                         <td>
-                            <a class="btn btn-info btn-sm" href="{{ url('DownloadAttachment') }}/{{ $attachment->imageable->name }}/{{ $attachment->filename }}" role="button"><i class="fa fa-download"></i></a>
-                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#DeleteImg{{ $attachment->id }}"><i class="fa fa-trash"></i></button>
+                            <a class="btn btn-info btn-sm" href="{{ url('DownloadAttachment') }}/{{ $attachment->attachmentable->name }}/{{ $attachment->filename }}" role="button"><i class="fa fa-download"></i></a>
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#DeleteAttachment{{ $attachment->id }}"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
-                  @include('pages.students.DeleteImg')
+                  @include('pages.judicials.DeleteImg')
                   @endforeach
                 </tbody>
                 <tfoot>
@@ -123,7 +137,7 @@
 
         </div>
         <div class="modal-footer">
-            <a href="{{ route('students.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+            <a href="{{ route('judicials.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
         </div>
       </div>
      </div>

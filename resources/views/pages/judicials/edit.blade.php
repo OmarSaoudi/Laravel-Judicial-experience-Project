@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Student
+    Edit Judicial
 @stop
 
 @section('css')
@@ -13,106 +13,99 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
      <h1>
-       Students
+       Judicials
      </h1>
      <ol class="breadcrumb">
        <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-       <li><a href="{{ route('students.index') }}">Students</a></li>
-       <li class="active">Edit Student</li>
+       <li><a href="{{ route('judicials.index') }}">Judicials</a></li>
+       <li class="active">Edit Judicial</li>
      </ol>
    </section>
 
    <section class="content">
       <div class="box box-primary">
           <div class="box-header">
-              <h3 class="box-title">Edit Student</h3>
+              <h3 class="box-title">Edit Judicial</h3>
           </div>
             <div class="box-body">
-                <form action="{{ route('students.update','test') }}" method="post" enctype="multipart/form-data">
-                      @csrf
-                      {{ method_field('patch') }}
+                    <form action="{{ route('judicials.update','test') }}" method="POST" autocomplete="off">
+                        @csrf
+                        {{ method_field('PATCH') }}
+
                         {{-- 1 --}}
                         <div class="row">
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <div class="form-group">
-                                 <label>Name Arabic</label>
-                                 <input type="hidden" value="{{ $students->id }}" name="id">
-                                 <input type="text" name="name" value="{{ $students->getTranslation('name', 'ar') }}" class="form-control" required>
+                                 <label>Name</label>
+                                 <input type="hidden" value="{{ $judicials->id }}" name="id">
+                                 <input type="text" name="name" value="{{ $judicials->name }}" class="form-control" required>
                                  <span class="help-block with-errors"></span>
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                               <div class="form-group">
-                                 <label>Name English</label>
-                                 <input type="text" name="name_en" value="{{ $students->getTranslation('name', 'en') }}" class="form-control" required>
+                                 <label>Statement</label>
+                                 <input type="text" name="statement" value="{{ $judicials->statement }}" class="form-control" required>
                                  <span class="help-block with-errors"></span>
                               </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                   <label>Council or Court</label>
+                                   <input type="text" name="council_or_court" value="{{ $judicials->council_or_court }}" class="form-control" required>
+                                   <span class="help-block with-errors"></span>
+                                </div>
                             </div>
                         </div>
                         {{-- End 1 --}}
 
                         {{-- 2 --}}
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-4">
                             <div class="form-group">
-                               <label>Email</label>
-                               <input type="email" name="email" value="{{ $students->email }}" class="form-control" required>
+                               <label>Case Number</label>
+                               <input type="text" name="case_number" value="{{ $judicials->case_number }}" class="form-control" required>
                                <span class="help-block with-errors"></span>
                             </div>
                           </div>
-                           <div class="col-md-6">
+                           <div class="col-md-4">
                               <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" name="password" class="form-control" value="{{ $students->password }}" required>
+                                <label>Index Number</label>
+                                <input type="text" name="index_number" value="{{ $judicials->index_number }}" class="form-control" required>
                                 <span class="help-block with-errors"></span>
                               </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                  <label>Session Day</label>
+                                  <input type="date" name="session_day" value="{{ $judicials->session_day }}"  class="form-control" required>
+                                  <span class="help-block with-errors"></span>
+                                </div>
                             </div>
                         </div>
                         {{-- End 2 --}}
 
                         {{-- 3 --}}
                         <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                 <label>Genders</label>
-                                 <select name="gender_id" class="form-control" required>
-                                    <option value="" selected disabled>Select Gender</option>
-                                    @foreach ($genders as $gender)
-                                        <option value="{{ $gender->id }}" {{ $students->gender_id == $gender->id ? 'selected' : '' }}>{{ $gender->name }}</option>
-                                    @endforeach
-                                 </select>
-                                 <span class="help-block with-errors"></span>
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                 <label>Nationalities</label>
-                                 <select name="nationalitie_id" class="form-control" required>
-                                    <option value="" selected disabled>Select Nationalitie</option>
-                                    @foreach ($nationalities as $nationalitie)
-                                        <option value="{{ $nationalitie->id }}" {{ $students->nationalitie_id == $nationalitie->id ? 'selected' : '' }}>{{ $nationalitie->name }}</option>
-                                    @endforeach
-                                 </select>
-                                 <span class="help-block with-errors"></span>
-                              </div>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                   <label>Bloods</label>
-                                   <select name="blood_id" class="form-control" required>
-                                     <option value="" selected disabled>Select Blood</option>
-                                     @foreach ($bloods as $blood)
-                                        <option value="{{ $blood->id }}" {{ $students->blood_id == $blood->id ? 'selected' : '' }}>{{ $blood->name }}</option>
-                                     @endforeach
-                                   </select>
-                                   <span class="help-block with-errors"></span>
+                                    <label>Room</label>
+                                    <input type="text" name="room" value="{{ $judicials->room }}" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                  <label>Date of Birth</label>
-                                  <input type="date" name="date_birth" value="{{ $students->date_birth }}" class="form-control" required>
-                                  <span class="help-block with-errors"></span>
+                                    <label>Investigation Number</label>
+                                    <input type="text" name="investigation_number" value="{{ $judicials->investigation_number }}" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Prosecution Number</label>
+                                    <input type="text" name="prosecution_number" value="{{ $judicials->prosecution_number }}" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
                                 </div>
                             </div>
                         </div>
@@ -120,61 +113,62 @@
 
                         {{-- 4 --}}
                         <div class="row">
-                             <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                   <label>Grades</label>
-                                   <select name="grade_id" class="form-control">
-                                        <option value="" selected disabled>Select Grade</option>
-                                        @foreach($grades as $grade)
-                                          <option value="{{ $grade->id }}" {{ $grade->id == $students->grade_id ? 'selected' : ""}}>{{ $grade->name }}</option>
-                                        @endforeach
-                                   </select>
-                                   <span class="help-block with-errors"></span>
+                                    <label>Deposit Day</label>
+                                    <input type="date" name="deposit_date" value="{{ $judicials->deposit_date }}" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
                                 </div>
-                             </div>
-                             <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                   <label>Classrooms</label>
-                                   <select name="class_id" class="form-control">
-                                       <option value="{{ $students->class_id }}">{{ $students->classroom->name }}</option>
-                                       @foreach($classrooms as $classroom)
-                                          <option value="{{ $classroom->id }}"> {{ $classroom->name }}</option>
-                                       @endforeach
-                                   </select>
-                                   <span class="help-block with-errors"></span>
+                                    <label>Deposit Number</label>
+                                    <input type="text" name="deposit_number" value="{{ $judicials->deposit_number }}" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
                                 </div>
-                             </div>
-                             <div class="col-md-3">
-                                <div class="form-group">
-                                   <label>Sections</label>
-                                   <select name="section_id" class="form-control">
-                                      <option value="{{ $students->section_id }}"> {{ $students->section->name }}</option>
-                                   </select>
-                                   <span class="help-block with-errors"></span>
-                                </div>
-                             </div>
-                             <div class="col-md-3">
-                              <div class="form-group">
-                                 <label>Academic Year</label>
-                                 <select name="academic_year" class="form-control" required>
-                                    <option value="" selected disabled>Select Academic Year</option>
-                                    @php
-                                        $current_year = date("Y");
-                                    @endphp
-                                    @for($year=$current_year; $year<=$current_year + 4 ;$year++)
-                                       <option value="{{ $year }}" {{$year == $students->academic_year ? 'selected' : ' '}}>{{ $year }}</option>
-                                    @endfor
-                                 </select>
-                                 <span class="help-block with-errors"></span>
-                              </div>
                             </div>
                         </div>
                         {{-- End 4 --}}
 
+                        {{-- 5 --}}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Advance Amount</label>
+                                    <input type="text" name="advance_amount" value="{{ $judicials->advance_amount }}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Amount Invoice</label>
+                                    <input type="text" name="amount_invoice" value="{{ $judicials->amount_invoice }}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Estimated Amount</label>
+                                    <input type="text" name="estimated_amount" value="{{ $judicials->estimated_amount }}" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                    <span class="help-block with-errors"></span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- End 5 --}}
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Note</label>
+                                <textarea name="note" class="form-control" placeholder="Enter ...">{{ $judicials->note }}</textarea>
+                            </div>
+                          </div>
+                        </div>
+
                         <br><br>
                         <div class="form-group" style="text-align:center">
                             <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Saving Data</button>
-                            <a href="{{ route('students.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+                            <a href="{{ route('judicials.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
                         </div>
                     </form>
                 </div>
@@ -185,54 +179,5 @@
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function () {
-        $('select[name="grade_id"]').on('change', function () {
-            var grade_id = $(this).val();
-            if (grade_id) {
-                $.ajax({
-                    url: "{{ URL::to('GetClassrooms') }}/" + grade_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="class_id"]').empty();
-                        $('select[name="class_id"]').append('<option selected disabled >Select Classroom</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="class_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            } else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script>
 
-<script>
-    $(document).ready(function () {
-        $('select[name="class_id"]').on('change', function () {
-            var class_id = $(this).val();
-            if (class_id) {
-                $.ajax({
-                    url: "{{ URL::to('GetSections') }}/" + class_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="section_id"]').empty();
-                        $('select[name="section_id"]').append('<option selected disabled >Select Section</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="section_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-
-                    },
-                });
-            }
-
-            else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script>
 @endsection

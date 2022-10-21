@@ -41,18 +41,12 @@
                 <th>Name</th>
                 <th>Statement</th>
                 <th>Council or Court</th>
-                <th>Case Number</th>
                 <th>Index Number</th>
                 <th>Session Day</th>
                 <th>Room</th>
-                <th>Investigation Number</th>
                 <th>Prosecution Number</th>
                 <th>Deposit Day</th>
                 <th>Deposit Number</th>
-                <th>Advance Amount</th>
-                <th>Amount Invoice</th>
-                <th>Estimated Amount</th>
-                <th>Note</th>
                 <th>Operation</th>
               </tr>
               </thead>
@@ -64,20 +58,12 @@
                 <td>{{ $judicial->name }}</td>
                 <td>{{ $judicial->statement }}</td>
                 <td>{{ $judicial->council_or_court }}</td>
-                <td>{{ $judicial->case_number }}</td>
                 <td>{{ $judicial->index_number }}</td>
                 <td>{{ $judicial->session_day }}</td>
                 <td>{{ $judicial->room }}</td>
-                <td>{{ $judicial->investigation_number }}</td>
                 <td>{{ $judicial->prosecution_number }}</td>
                 <td>{{ $judicial->deposit_date }}</td>
                 <td>{{ $judicial->deposit_number }}</td>
-                <td>{{ $judicial->advance_amount }}</td>
-                <td>{{ $judicial->amount_invoice }}</td>
-                <td>{{ $judicial->estimated_amount }}</td>
-                <td>{{ $judicial->section->section_name }}</td>
-                <td>{{ $judicial->state->name }}</td>
-                <td>{{ $judicial->note }}</td>
                 <td>
                   <a href="{{ route('judicials.edit',$judicial->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                   <a class="btn btn-info btn-sm" href="{{ route('judicials.show',$judicial->id) }}"><i class="fa fa-eye"></i></a>
@@ -94,18 +80,12 @@
                 <th>Name</th>
                 <th>Statement</th>
                 <th>Council or Court</th>
-                <th>Case Number</th>
                 <th>Index Number</th>
                 <th>Session Day</th>
                 <th>Room</th>
-                <th>Investigation Number</th>
                 <th>Prosecution Number</th>
                 <th>Deposit Day</th>
                 <th>Deposit Number</th>
-                <th>Advance Amount</th>
-                <th>Amount Invoice</th>
-                <th>Estimated Amount</th>
-                <th>Note</th>
                 <th>Operation</th>
               </tr>
               </tfoot>
