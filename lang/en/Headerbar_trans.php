@@ -1,8 +1,7 @@
 <?php
 
 return [
-
-    'Notifications' => 'Notifications',
-    'Logoff' => 'Logoff',
-
+    'legal_expert' => 'Legal Expert',
+    'profile' => 'Profile',
+    'logout' => 'Log out',
 ];

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Judicials
+    {{ trans('Judicial_trans.judicials') }}
 @stop
 
 @section('css')
@@ -14,11 +14,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Judicials
+        {{ trans('Judicial_trans.judicials') }}
     </h1>
     <ol class="breadcrumb">
-      <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="active">Judicials</li>
+      <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> {{ trans('Judicial_trans.dashboard') }}</a></li>
+      <li class="active">{{ trans('Judicial_trans.judicials') }}</li>
     </ol>
   </section>
   <!-- Main content -->
@@ -27,10 +27,10 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Judicials List <small>{{ $judicials->count() }}</small></h3>
+            <h3 class="box-title">{{ trans('Judicial_trans.judicials_list') }} <small>{{ $judicials->count() }}</small></h3>
             <br><br>
-            <a href="judicials/create" class="btn btn-success"><i class="fa fa-plus"></i> Add</a>
-            <button type="button" class="btn btn-danger" id="btn_delete_all"><i class="fa fa-trash"></i> Delete All</button>
+            <a href="judicials/create" class="btn btn-success"><i class="fa fa-plus"></i> {{ trans('Judicial_trans.add') }}</a>
+            <button type="button" class="btn btn-danger" id="btn_delete_all"><i class="fa fa-trash"></i> {{ trans('Judicial_trans.delete_all') }}</button>
           <!-- /.box-header -->
           <div class="box-body" id="datatable">
             <table id="example1" class="table table-bordered table-striped">
@@ -38,16 +38,16 @@
               <tr>
                 <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
-                <th>Name</th>
-                <th>Statement</th>
-                <th>Council or Court</th>
-                <th>Index Number</th>
-                <th>Session Day</th>
-                <th>Room</th>
-                <th>Prosecution Number</th>
-                <th>Deposit Day</th>
-                <th>Deposit Number</th>
-                <th>Operation</th>
+                <th>{{ trans('Judicial_trans.name_judicial') }}</th>
+                <th>{{ trans('Judicial_trans.statement') }}</th>
+                <th>{{ trans('Judicial_trans.council_or_court') }}</th>
+                <th>{{ trans('Judicial_trans.index_number') }}</th>
+                <th>{{ trans('Judicial_trans.session_day') }}</th>
+                <th>{{ trans('Judicial_trans.room') }}</th>
+                <th>{{ trans('Judicial_trans.prosecution_number') }}</th>
+                <th>{{ trans('Judicial_trans.deposit_date') }}</th>
+                <th>{{ trans('Judicial_trans.deposit_number') }}</th>
+                <th>{{ trans('Judicial_trans.operation') }}</th>
               </tr>
               </thead>
               <tbody>
@@ -77,16 +77,16 @@
               <tr>
                 <th><input type="checkbox" name="select_all" id="example-select-all" onclick="CheckAll('box1', this)"></th>
                 <th>#</th>
-                <th>Name</th>
-                <th>Statement</th>
-                <th>Council or Court</th>
-                <th>Index Number</th>
-                <th>Session Day</th>
-                <th>Room</th>
-                <th>Prosecution Number</th>
-                <th>Deposit Day</th>
-                <th>Deposit Number</th>
-                <th>Operation</th>
+                <th>{{ trans('Judicial_trans.name_judicial') }}</th>
+                <th>{{ trans('Judicial_trans.statement') }}</th>
+                <th>{{ trans('Judicial_trans.council_or_court') }}</th>
+                <th>{{ trans('Judicial_trans.index_number') }}</th>
+                <th>{{ trans('Judicial_trans.session_day') }}</th>
+                <th>{{ trans('Judicial_trans.room') }}</th>
+                <th>{{ trans('Judicial_trans.prosecution_number') }}</th>
+                <th>{{ trans('Judicial_trans.deposit_date') }}</th>
+                <th>{{ trans('Judicial_trans.deposit_number') }}</th>
+                <th>{{ trans('Judicial_trans.operation') }}</th>
               </tr>
               </tfoot>
             </table>
@@ -110,19 +110,19 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-              <h4 class="modal-title">Delete All Judicials</h4>
+              <h4 class="modal-title">{{ trans('Judicial_trans.delete_all_judicials') }}</h4>
         </div>
         <div class="modal-body">
           <form action="{{ route('delete_all_j') }}" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <p>Are sure of the deleting process ?</p><br>
+                        <p>{{ trans('Judicial_trans.Are_sure_of_the_deleting_process_?') }}</p><br>
                         <input class="text" type="hidden" id="delete_all_id" name="delete_all_id" value=''>
                     </div>
 
                     <div class="modal-footer">
-                         <button type="submit" class="btn btn-danger">Save changes</button>
-                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                         <button type="submit" class="btn btn-danger">{{ trans('Judicial_trans.save_changes') }}</button>
+                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{ trans('Judicial_trans.close') }}</button>
                     </div>
           </form>
         </div>

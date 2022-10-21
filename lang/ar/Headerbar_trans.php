@@ -1,8 +1,7 @@
 <?php
 
 return [
-
-    'Notifications' => 'الاشعارات',
-    'Logoff' => 'تسجيل خروج',
-
+    'legal_expert' => 'خبير قضائي',
+    'profile' => 'الملف الشخصي',
+    'logout' => 'تسجيل خروج',
 ];
