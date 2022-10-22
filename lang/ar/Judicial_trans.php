@@ -9,7 +9,7 @@ return [
     'delete_all' => 'حذف الكل',
     'delete_all_judicials' => 'حذف كل الخبرة القضائية',
     'Are_sure_of_the_deleting_process_?' => 'هل أنت متأكد من عملية الحذف ؟',
-    'save_changes' => 'احفظ التغييرات',
+    'save_changes' => 'إحفظ التغييرات',
     'close' => 'أغلق',
 
 
@@ -29,13 +29,21 @@ return [
     'estimated_amount' => 'المبلغ المقدر',
     'note' => 'الملاحظة',
     'operation' => 'العمليات',
-    'create_judicial' => 'إضافة خبرة قضائية',
+    'create_judicial' => 'إضافة الخبرة قضائية',
     'saving_data' => 'حفظ البيانات',
     'back' => 'الرجوع',
     'attachments' => 'المرفقات',
 
-    'edit_judicial' => 'تعديل خبرة قضائية',
-    'delete_judicial' => 'حذف خبرة قضائية',
+    'edit_judicial' => 'تعديل الخبرة قضائية',
+    'delete_judicial' => 'حذف الخبرة قضائية',
+    'show_judicial' => 'عرض الخبرة القضائية',
+    'judicial_details' => 'تفاصيل الخبرة القضائية',
+    'judicial_information' => 'معلومات الخبرة القضائية',
+    'add_attachments' => 'إضافة مرفقات',
+    'attachment_format' => 'صيغة المرفقات',
+    'file_name' => 'إسم الملف',
+    'created_at' => 'أنشئت في',
+
 
 
 

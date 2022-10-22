@@ -36,7 +36,11 @@ return [
 
     'edit_judicial' => 'Edit Judicial',
     'delete_judicial' => 'Delete Judicial',
-
-
+    'judicial_details' => 'Judicials Details',
+    'judicial_information' => 'Judicial information',
+    'add_attachments' => 'Add Attachments',
+    'attachment_format' => 'Attachment Format',
+    'file_name' => 'File Name',
+    'created_at' => 'Created At',
 
 ];
