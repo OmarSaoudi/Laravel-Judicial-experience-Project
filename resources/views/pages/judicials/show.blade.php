@@ -115,7 +115,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $attachment->filename }}</td>
-                        <td>{{ $attachment->created_at->diffForHumans() }}</td>
+                        <td>{{ $attachment->created_at->format('Y-m-d  H:i:s');  }}</td>
                         <td>
                             <a class="btn btn-info btn-sm" href="{{ url('DownloadAttachment') }}/{{ $attachment->attachmentable->name }}/{{ $attachment->filename }}" role="button"><i class="fa fa-download"></i></a>
                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#DeleteAttachment{{ $attachment->id }}"><i class="fa fa-trash"></i></button>
