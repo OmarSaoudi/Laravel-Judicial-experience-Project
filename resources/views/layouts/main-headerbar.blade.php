@@ -22,15 +22,15 @@
               <span class="label label-warning">({{ Auth::user()->unreadNotifications->count() }})</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have ({{ Auth::user()->unreadNotifications->count() }}) notifications</li>
+              <li class="header" style="text-align:center">You have ({{ Auth::user()->unreadNotifications->count() }}) notifications  <a href="{{ route('MarkAsRead') }}" style="text-align:center"><b>Mark all as read</b></a></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   @foreach (Auth::user()->unreadNotifications as $notification)
                   <li><!-- start message -->
-                    <a href="#">
+                    <a href="{{ route('NotificationReaded', $notification->data['judicial_id']) }}">
                       <h4>
-                        {{ $notification->data['user_create'] }}
+                        <b>{{ $notification->data['user_create'] }}</b>
                         <small><i class="fa fa-clock-o"></i> {{ $notification->created_at }}</small>
                       </h4>
                       <p>{{ $notification->data['name'] }}</p>

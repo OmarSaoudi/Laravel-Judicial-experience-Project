@@ -79,6 +79,25 @@ class JudicialRepository implements JudicialRepositoryInterface{
 
     }
 
+    public function NotificationReaded($id)
+    {
+        $judicials = Judicial::findorfail($id);
+        $get_id = DB::table('notifications')->where('data->judicial_id',$id)->pluck('id');
+        //DB::table('notifications')->where('id',$get_id)->update(['read_at' => now()]);
+        DB::table('notifications')->where('id',$get_id)->delete();
+        return redirect()->back();
+    }
+
+    public function MarkAsRead()
+    {
+        $users = User::find(auth()->user()->id);
+        foreach ($users->unreadNotifications as $notification) {
+            //$notification->markAsRead();
+            $notification->delete();
+        }
+        return redirect()->back();
+    }
+
     public function ShowJudicials($id)
     {
         $judicials = Judicial::findorfail($id);

@@ -37,6 +37,12 @@ interface JudicialRepositoryInterface{
     //DeleteAttachment
     public function DeleteAttachment($request);
 
+    //NotificationReaded
+    public function NotificationReaded($id);
+
+    //MarkAsRead
+    public function MarkAsRead();
+
 }
 
 

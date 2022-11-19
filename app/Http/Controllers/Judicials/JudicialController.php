@@ -113,4 +113,14 @@ class JudicialController extends Controller
     {
         return $this->Judicial->DeleteAttachment($request);
     }
+
+    public function NotificationReaded($id)
+    {
+        return $this->Judicial->NotificationReaded($id);
+    }
+
+    public function MarkAsRead()
+    {
+        return $this->Judicial->MarkAsRead();
+    }
 }

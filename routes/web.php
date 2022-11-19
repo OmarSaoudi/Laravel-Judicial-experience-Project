@@ -36,6 +36,9 @@ Route::group(
             Route::post('UploadAttachment', [JudicialController::class, 'UploadAttachment'])->name('UploadAttachment');
             Route::get('DownloadAttachment/{judicialsname}/{filename}', [JudicialController::class, 'DownloadAttachment'])->name('DownloadAttachment');
             Route::post('DeleteAttachment', [JudicialController::class, 'DeleteAttachment'])->name('DeleteAttachment');
+            Route::get('NotificationReaded/{id}/', [JudicialController::class, 'NotificationReaded'])->name('NotificationReaded');
+            Route::get('MarkAsRead', [JudicialController::class, 'MarkAsRead'])->name('MarkAsRead');
+
 
             Route::resource('settings', SettingController::class);
         });
