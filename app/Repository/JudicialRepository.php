@@ -3,8 +3,11 @@
 namespace App\Repository;
 use App\Models\Judicial;
 use App\Models\Attachment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\CreateJudicial;
+use Illuminate\Support\Facades\Notification;
 
 class JudicialRepository implements JudicialRepositoryInterface{
 
@@ -42,6 +45,10 @@ class JudicialRepository implements JudicialRepositoryInterface{
             $judicials->estimated_amount = $request->estimated_amount;
             $judicials->note = $request->note;
             $judicials->save();
+
+            $users = User::where('id','!=',auth()->user()->id)->get();
+            $user_create = auth()->user()->name;
+            Notification::send($users, new CreateJudicial($judicials->id,$user_create,$judicials->name));
 
             // insert attachment
             if($request->hasfile('photos'))

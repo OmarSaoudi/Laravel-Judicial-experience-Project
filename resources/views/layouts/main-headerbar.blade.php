@@ -15,6 +15,32 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
+        <!-- Notifications: style can be found in dropdown.less -->
+        <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">({{ Auth::user()->unreadNotifications->count() }})</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have ({{ Auth::user()->unreadNotifications->count() }}) notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  @foreach (Auth::user()->unreadNotifications as $notification)
+                  <li><!-- start message -->
+                    <a href="#">
+                      <h4>
+                        {{ $notification->data['user_create'] }}
+                        <small><i class="fa fa-clock-o"></i> {{ $notification->created_at }}</small>
+                      </h4>
+                      <p>{{ $notification->data['name'] }}</p>
+                    </a>
+                  </li><!-- end message -->
+                  @endforeach
+                </ul>
+              </li>
+            </ul>
+        </li>
         <li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               @if (App::getLocale() == 'ar'){{ LaravelLocalization::getCurrentLocaleName() }} <img src="{{ URL::asset('assets/images/flags/DZ.png') }}" alt="">
