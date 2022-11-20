@@ -22,7 +22,7 @@
               <span class="label label-warning">({{ Auth::user()->unreadNotifications->count() }})</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header" style="text-align:center">You have ({{ Auth::user()->unreadNotifications->count() }}) notifications  <a href="{{ route('MarkAsRead') }}" style="text-align:center"><b>Mark all as read</b></a></li>
+              <li class="header" style="text-align:center">{{ trans('Headerbar_trans.you_have') }} ({{ Auth::user()->unreadNotifications->count() }}) {{ trans('Headerbar_trans.notifications') }} <a href="{{ route('MarkAsRead') }}" style="text-align:center"><b>{{ trans('Headerbar_trans.mark_all_as_read') }}</b></a></li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
