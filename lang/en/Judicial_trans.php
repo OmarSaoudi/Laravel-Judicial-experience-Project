@@ -42,5 +42,6 @@ return [
     'attachment_format' => 'Attachment Format',
     'file_name' => 'File Name',
     'created_at' => 'Created At',
+    'show_judicial' => 'Show Judicial',
 
 ];
